@@ -100,12 +100,8 @@ We welcome contributions! Please follow these steps:
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
----
-
-## 📄 License
-
-Distributed under the MIT License.
 
 ---
 
-*Crafted with 💜 by the Insighta Team.*
+
+*Crafted with 💜 by Sagar Ahire*
