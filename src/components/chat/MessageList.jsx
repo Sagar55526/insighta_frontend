@@ -49,14 +49,29 @@ const MessageList = ({ messages, isLoading }) => {
                                             <div className="w-1.5 h-1.5 bg-primary-400 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
                                             <div className="w-1.5 h-1.5 bg-primary-400 rounded-full animate-bounce"></div>
                                         </div>
-                                        <span className="font-medium">Synthesizing intelligence...</span>
+                                        <span className="font-medium">Thinking...</span>
                                     </div>
                                 </div>
                             ) : (
                                 <div className={`prose prose-sm max-w-none leading-relaxed
                         ${message.is_bot ? 'prose-slate' : 'prose-invert'}
                     `}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                    <ReactMarkdown
+                                        remarkPlugins={[remarkGfm]}
+                                        components={{
+                                            table: ({ node, ...props }) => (
+                                                <div className="overflow-x-auto my-4 rounded-xl border border-slate-200/60 shadow-sm custom-scrollbar">
+                                                    <table {...props} className="min-w-full divide-y divide-slate-200" />
+                                                </div>
+                                            ),
+                                            th: ({ node, ...props }) => (
+                                                <th {...props} className="bg-slate-50/80 px-4 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider" />
+                                            ),
+                                            td: ({ node, ...props }) => (
+                                                <td {...props} className="px-4 py-3 text-sm text-slate-700 border-t border-slate-100" />
+                                            )
+                                        }}
+                                    >
                                         {message.content}
                                     </ReactMarkdown>
                                 </div>
